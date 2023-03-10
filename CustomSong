@@ -1,0 +1,94 @@
+silver_soul = "C:/Users/briana_amezcua/Downloads/onlymp3.to - Silver Soul- Beachouse (instrumental)-w_NtLfY3xG0-256k-1654450618051.wav"
+delay = 1
+bri = 0
+use_bpm 150
+a = 0
+use_synth :tri
+define :firstp do
+  sleep delay
+  play :fs4
+  sleep 0.5
+  play :g4
+  sleep 0.5
+  play :fs4
+  sleep 0.5
+  play :e4
+  sleep 0.5
+end
+
+t = 0
+h = 0.5
+p = 1
+sleep 16.9
+4.times do
+  sample  silver_soul, amp: p, finish: h, start: t
+  
+  t = h
+  h = h + 0.1
+  p = t + 1
+  sleep 0.5
+end
+
+live_loop:one do
+  1.times do
+    sleep bri
+  end
+  bri = 0
+  sample :drum_cymbal_pedal, amp: 1
+  sleep 4
+end
+
+
+live_loop:two do
+  with_fx :bitcrusher,smooth:24,amp:1,mix:1 do
+    firstp
+    
+    play :fs4
+    sleep 0.5
+    play :e4
+    sleep 0.5
+    play :fs4
+    sleep 0.5
+    play :e4
+    sleep 0.5
+    play :fs4
+    sleep 0.5
+    play :b3
+    sleep 0.5
+    play :b3
+    sleep 0.5
+    play :e4
+    sleep 0.5
+    
+    
+    play :e4
+    sleep 2
+    play :b2
+    sleep 0.5
+    play :e4
+    sleep 0.5
+    play :fs4
+    sleep 0.5
+    play :e4
+    sleep 0.5
+    
+    play :fs4
+    sleep 0.5
+    play :e4
+    sleep 0.5
+    play :fs4
+    sleep 0.5
+    play :e4
+    sleep 0.5
+    play :fs4
+    sleep 0.5
+    play :b3
+    sleep 0.5
+    play :b3
+    sleep 0.5
+    play :e4
+    wait 1.5
+  end
+  delay = delay + 0.2
+  bri = bri + 0.2
+end
